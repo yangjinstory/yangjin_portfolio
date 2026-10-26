@@ -1,0 +1,8 @@
+User-agent: GPTBot
+Disallow: /yangjin_portfolio/
+
+User-agent: OAI-SearchBot
+Disallow: /yangjin_portfolio/
+
+User-agent: *
+Allow: /
