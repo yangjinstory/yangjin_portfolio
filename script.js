@@ -43,3 +43,11 @@ function openMaterial(project,i){
 function closeMaterial(){document.getElementById('materialLightbox')?.remove();}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMaterial()});
 renderCards();
+
+// CAREER: 기존 타임라인 스타일을 유지하며 경력 데이터를 표시합니다.
+function renderCareers(){
+ const root=document.getElementById('careerTimeline');
+ if(!root || typeof CAREERS==='undefined')return;
+ root.innerHTML=CAREERS.map(c=>`<div class="job"><h3>${escapeHtml(c.company)} · ${escapeHtml(c.department)} | ${escapeHtml(c.position)}</h3><small>${escapeHtml(c.period)}</small><p>${escapeHtml(c.description)}</p></div>`).join('');
+}
+renderCareers();

@@ -41,3 +41,43 @@ const PROJECTS = [
     "insight": "기획, 홍보, 협업, 현장 대응, 결과 보고까지 연결하는 프로젝트 관리 역량을 축적했습니다."
   }
 ];
+
+// CAREER 영역에 사용할 경력 데이터입니다.
+// 실제 화면 반영 여부는 script.js / index.html의 렌더링 구조에 따라 달라집니다.
+const CAREERS = [
+  {
+    period: "2022.03 – 2025.09",
+    company: "메가스터디교육㈜",
+    department: "러셀학원사업본부 마케팅팀",
+    position: "대리",
+    description: "연간 광고 예산 수립 및 온·오프라인 광고 기획·운영, 홍보 영상 및 마케팅 콘텐츠 기획, 대규모 통합 설명회 운영"
+  },
+  {
+    period: "2021.03 – 2022.03",
+    company: "에듀해시글로벌파트너스㈜",
+    department: "올라에듀실 마케팅팀",
+    position: "매니저",
+    description: "경찰공무원·경찰승진 온라인 교육 홈페이지 및 디지털 광고 운영"
+  },
+  {
+    period: "2018.12 – 2021.02",
+    company: "㈜파고다아카데미",
+    department: "학원사업부 운영기획팀",
+    position: "매니저",
+    description: "중국어 강사 채용·계약 및 매니지먼트, 강의 기획 및 시간표 편성"
+  },
+  {
+    period: "2018.08 – 2018.12",
+    company: "㈜파고다에스씨에스",
+    department: "FC사업부 차이랑사업팀",
+    position: "사원",
+    description: "전국 가맹사업 설명회 및 입문교육 운영 지원, 지사·가맹점 영업지원 및 관리"
+  },
+  {
+    period: "2015.12 – 2016.12",
+    company: "㈜해커스어학원",
+    department: "기획부서 콘텐츠기획팀",
+    position: "사원",
+    description: "중국어 학습 커뮤니티 및 SNS 채널 운영, 중국어 학습 콘텐츠 기획"
+  }
+];
