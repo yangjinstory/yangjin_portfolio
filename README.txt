@@ -7,3 +7,5 @@
 - 원본 index.html을 제공받지 못해 PPT 1페이지의 '삭제' 지시가 가리키는 요소는 수정하지 않았습니다.
 - 이미지의 내용은 업로드된 이미지 그대로입니다. 비식별화 여부를 반드시 최종 확인하세요.
 - robots/noindex 설정은 기존 index.html에 존재하는지 확인이 필요합니다.
+
+PROJECT 02: 3 images added with click-to-enlarge. Original PROJECT 01 preserved.
