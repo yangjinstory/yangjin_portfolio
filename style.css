@@ -203,3 +203,17 @@ h2 {
 .project1-lightbox-close{position:absolute;right:20px;top:10px;border:0;background:none;color:white;font-size:36px;cursor:pointer}
 @media(max-width:680px){.project1-gallery{padding:10px;margin:24px auto 30px}.project1-slide-frame{aspect-ratio:1.6/1}}
 @media(prefers-reduced-motion:reduce){.project1-gallery *{transition:none!important}}
+
+/* 스크롤형 프로젝트 상세 페이지 */
+#projectCaseStudies{margin-top:64px}
+.case-study{scroll-margin-top:100px;padding:52px 0 60px;border-top:1px solid #dbe4ed}
+.case-study .case-eyebrow{color:#42698f}
+.case-study h2{margin-top:12px}
+.case-study .detail{max-width:920px}
+.case-top{display:inline-block;margin-top:28px;color:#31567d;font-weight:700;font-size:14px}
+.portfolio-materials{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:920px;margin:30px auto 12px}
+.portfolio-materials figure{margin:0;padding:12px;background:#f7f9fc;border:1px solid #e0e6ed;border-radius:10px}
+.material-button{display:block;width:100%;padding:0;border:0;background:white;cursor:zoom-in}
+.material-button img{display:block;width:100%;height:auto;aspect-ratio:1.7/1;object-fit:contain}
+.portfolio-materials figcaption{text-align:center;color:#42698f;font-size:13px;font-weight:700;margin-top:10px}
+@media(max-width:680px){.portfolio-materials{grid-template-columns:1fr}.case-study{padding:38px 0 45px;scroll-margin-top:80px}}
