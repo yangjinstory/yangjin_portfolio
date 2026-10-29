@@ -20,9 +20,9 @@ const project2Images=[
 ];
 // PROJECT 3 첫 번째 이미지의 하단 영상 썸네일 3개에만 링크를 연결합니다.
 const project3VideoLinks=[
- {title:'윈터스쿨 홍보영상',url:'https://naver.me/xnOyZQJf'},
- {title:'팀플 홍보영상',url:'https://naver.me/xiLpvcS8'},
- {title:'재수 우선선발반 홍보영상',url:'https://naver.me/F5slH4Ix'}
+ {title:'윈터 홍보영상',url:'https://naver.me/xnOyZQJf'},
+ {title:'우선 홍보영상',url:'https://naver.me/F5slH4Ix'},
+ {title:'팀플 홍보영상',url:'https://naver.me/xiLpvcS8'}
 ];
 function project3VideoHotspots(){
  return project3VideoLinks.map((v,i)=>`<a href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="${v.title} 새 창에서 보기" title="${v.title} 보기" style="position:absolute;left:${[1.6,34.4,67.1][i]}%;top:81.9%;width:31.4%;height:15.9%;z-index:3;cursor:pointer;"></a>`).join('');
