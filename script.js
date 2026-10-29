@@ -16,7 +16,8 @@ const project3Images=[
 const project2Images=[
  {src:'project2_material_1.png',title:'광고 운영 성과 지표'},
  {src:'project2_material_2.png',title:'광고 매체별 운영 현황'},
- {src:'project2_material_3.png',title:'광고 데이터 및 전환 분석'}
+ {src:'project2_material_3.png',title:'광고 데이터 및 전환 분석'},
+ {src:'project2_material_4.png',title:'캠페인별 광고 성과 비교'}
 ];
 // PROJECT 3 첫 번째 이미지의 하단 영상 썸네일 3개에만 링크를 연결합니다.
 const project3VideoLinks=[
