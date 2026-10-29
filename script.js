@@ -27,8 +27,28 @@ const project3VideoLinks=[
 function project3VideoHotspots(){
  return project3VideoLinks.map((v,i)=>`<a href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="${v.title} 새 창에서 보기" title="${v.title} 보기" style="position:absolute;left:${[1.6,34.4,67.1][i]}%;top:81.9%;width:31.4%;height:15.9%;z-index:3;cursor:pointer;"></a>`).join('');
 }
+// PROJECT 3 두 번째 이미지: 왼쪽→오른쪽, 위→아래 순서로 영상 링크 연결
+const project3InterviewLinks=[
+ {title:'합격수기 1',url:'https://youtu.be/hZj9y7u5iME?si=LujAdqm17CH6BHCB'},
+ {title:'합격수기 2',url:'https://youtu.be/TVeifL712Uk?si=t0dMCPjPTS8avWMk'},
+ {title:'응원영상 3',url:'https://www.youtube.com/watch?v=DXxh--NlPaE'},
+ {title:'학원영상 4',url:'https://youtu.be/WaW3T1D_78U?si=k45hRbAxDv_pPzUV'},
+ {title:'유퀴즈 1',url:'https://youtu.be/6xYd5M3L7to?si=SQcXSoBYCwUih_yd'},
+ {title:'유퀴즈 2',url:'https://youtu.be/UmQ1bO_FqY4?si=NVSrWj3TfjntcI4t'}
+];
+function project3InterviewHotspots(){
+ const positions=[
+  [3,1.9,46.2,28.7],[50.8,1.9,46.2,28.7],
+  [3,32.1,46.2,31.4],[50.8,32.1,46.2,31.4],
+  [3,65,46.2,32.3],[50.8,65,46.2,32.3]
+ ];
+ return project3InterviewLinks.map((v,i)=>{
+  const [left,top,width,height]=positions[i];
+  return `<a href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="${v.title} 새 탭에서 보기" title="${v.title} 보기" style="position:absolute;left:${left}%;top:${top}%;width:${width}%;height:${height}%;z-index:3;cursor:pointer;"></a>`;
+ }).join('');
+}
 function projectMaterials(items=materialImages){
- return `<div class="portfolio-materials">${items.map((m,i)=>`<figure>${items===project3Images&&i===0?`<div style="position:relative;width:100%;line-height:0;"><button type="button" class="material-button" onclick="openMaterial('project3',0)" aria-label="${escapeHtml(m.title)} 확대" style="display:block;width:100%;"><img src="${m.src}" alt="${escapeHtml(m.title)}" loading="lazy" style="display:block;width:100%;height:auto;"></button>${project3VideoHotspots()}</div>`:`<button type="button" class="material-button" onclick="openMaterial('${items===project3Images?'project3':items===project2Images?'project2':'project1'}',${i})" aria-label="${escapeHtml(m.title)} 확대"><img src="${m.src}" alt="${escapeHtml(m.title)}" loading="lazy"></button>`}<figcaption>${escapeHtml(m.title)}</figcaption></figure>`).join('')}</div>${items===materialImages?'<p class="note">※ 이해를 돕기 위해 실제 예산 및 내부 수치는 비식별화한 자료입니다.</p>':''}`;
+ return `<div class="portfolio-materials">${items.map((m,i)=>`<figure>${items===project3Images&&i===0?`<div style="position:relative;width:100%;line-height:0;"><button type="button" class="material-button" onclick="openMaterial('project3',0)" aria-label="${escapeHtml(m.title)} 확대" style="display:block;width:100%;"><img src="${m.src}" alt="${escapeHtml(m.title)}" loading="lazy" style="display:block;width:100%;height:auto;"></button>${project3VideoHotspots()}</div>`:items===project3Images&&i===1?`<div style="position:relative;width:100%;line-height:0;"><button type="button" class="material-button" onclick="openMaterial('project3',1)" aria-label="${escapeHtml(m.title)} 확대" style="display:block;width:100%;"><img src="${m.src}" alt="${escapeHtml(m.title)}" loading="lazy" style="display:block;width:100%;height:auto;"></button>${project3InterviewHotspots()}</div>`:`<button type="button" class="material-button" onclick="openMaterial('${items===project3Images?'project3':items===project2Images?'project2':'project1'}',${i})" aria-label="${escapeHtml(m.title)} 확대"><img src="${m.src}" alt="${escapeHtml(m.title)}" loading="lazy"></button>`}<figcaption>${escapeHtml(m.title)}</figcaption></figure>`).join('')}</div>${items===materialImages?'<p class="note">※ 이해를 돕기 위해 실제 예산 및 내부 수치는 비식별화한 자료입니다.</p>':''}`;
 }
 function renderCards(){
  const root=document.getElementById('projectCards');
@@ -50,7 +70,7 @@ function openMaterial(project,i){
  const overlay=document.createElement('div');
  overlay.id='materialLightbox';overlay.className='project1-lightbox';
  overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-label',item.title);
- overlay.innerHTML=`<button class="project1-lightbox-close" type="button" aria-label="닫기">×</button>${project==='project3'&&i===0?`<div style="position:relative;width:min(96vw,calc((100vh - 80px)*1.5));max-height:calc(100vh - 80px);line-height:0;"><img src="${item.src}" alt="${escapeHtml(item.title)}" style="display:block;width:100%;height:auto;max-height:calc(100vh - 80px);object-fit:contain;">${project3VideoHotspots()}</div>`:`<img src="${item.src}" alt="${escapeHtml(item.title)}">`}`;
+ overlay.innerHTML=`<button class="project1-lightbox-close" type="button" aria-label="닫기">×</button>${project==='project3'&&i===0?`<div style="position:relative;width:min(96vw,calc((100vh - 80px)*1.5));max-height:calc(100vh - 80px);line-height:0;"><img src="${item.src}" alt="${escapeHtml(item.title)}" style="display:block;width:100%;height:auto;max-height:calc(100vh - 80px);object-fit:contain;">${project3VideoHotspots()}</div>`:project==='project3'&&i===1?`<div style="position:relative;width:min(96vw,calc((100vh - 80px)*1.5));max-height:calc(100vh - 80px);line-height:0;"><img src="${item.src}" alt="${escapeHtml(item.title)}" style="display:block;width:100%;height:auto;max-height:calc(100vh - 80px);object-fit:contain;">${project3InterviewHotspots()}</div>`:`<img src="${item.src}" alt="${escapeHtml(item.title)}">`}`;
  document.body.appendChild(overlay);
  overlay.querySelector('button').focus();
  overlay.addEventListener('click',e=>{if(e.target===overlay||e.target.closest('.project1-lightbox-close'))closeMaterial()});
