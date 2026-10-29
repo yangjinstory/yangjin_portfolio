@@ -18,8 +18,17 @@ const project2Images=[
  {src:'project2_material_2.png',title:'광고 매체별 운영 현황'},
  {src:'project2_material_3.png',title:'광고 데이터 및 전환 분석'}
 ];
+// PROJECT 3 첫 번째 이미지의 하단 영상 썸네일 3개에만 링크를 연결합니다.
+const project3VideoLinks=[
+ {title:'윈터스쿨 홍보영상',url:'https://naver.me/xnOyZQJf'},
+ {title:'팀플 홍보영상',url:'https://naver.me/xiLpvcS8'},
+ {title:'재수 우선선발반 홍보영상',url:'https://naver.me/F5slH4Ix'}
+];
+function project3VideoHotspots(){
+ return project3VideoLinks.map((v,i)=>`<a href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="${v.title} 새 창에서 보기" title="${v.title} 보기" style="position:absolute;left:${[1.6,34.4,67.1][i]}%;top:81.9%;width:31.4%;height:15.9%;z-index:3;cursor:pointer;"></a>`).join('');
+}
 function projectMaterials(items=materialImages){
- return `<div class="portfolio-materials">${items.map((m,i)=>`<figure><button type="button" class="material-button" onclick="openMaterial('${items===project3Images?'project3':items===project2Images?'project2':'project1'}',${i})" aria-label="${escapeHtml(m.title)} 확대"><img src="${m.src}" alt="${escapeHtml(m.title)}" loading="lazy"></button><figcaption>${escapeHtml(m.title)}</figcaption></figure>`).join('')}</div>${items===materialImages?'<p class="note">※ 이해를 돕기 위해 실제 예산 및 내부 수치는 비식별화한 자료입니다.</p>':''}`;
+ return `<div class="portfolio-materials">${items.map((m,i)=>`<figure>${items===project3Images&&i===0?`<div style="position:relative;width:100%;line-height:0;"><button type="button" class="material-button" onclick="openMaterial('project3',0)" aria-label="${escapeHtml(m.title)} 확대" style="display:block;width:100%;"><img src="${m.src}" alt="${escapeHtml(m.title)}" loading="lazy" style="display:block;width:100%;height:auto;"></button>${project3VideoHotspots()}</div>`:`<button type="button" class="material-button" onclick="openMaterial('${items===project3Images?'project3':items===project2Images?'project2':'project1'}',${i})" aria-label="${escapeHtml(m.title)} 확대"><img src="${m.src}" alt="${escapeHtml(m.title)}" loading="lazy"></button>`}<figcaption>${escapeHtml(m.title)}</figcaption></figure>`).join('')}</div>${items===materialImages?'<p class="note">※ 이해를 돕기 위해 실제 예산 및 내부 수치는 비식별화한 자료입니다.</p>':''}`;
 }
 function renderCards(){
  const root=document.getElementById('projectCards');
@@ -41,10 +50,10 @@ function openMaterial(project,i){
  const overlay=document.createElement('div');
  overlay.id='materialLightbox';overlay.className='project1-lightbox';
  overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-label',item.title);
- overlay.innerHTML=`<button class="project1-lightbox-close" type="button" aria-label="닫기">×</button><img src="${item.src}" alt="${escapeHtml(item.title)}">`;
+ overlay.innerHTML=`<button class="project1-lightbox-close" type="button" aria-label="닫기">×</button>${project==='project3'&&i===0?`<div style="position:relative;width:min(96vw,calc((100vh - 80px)*1.5));max-height:calc(100vh - 80px);line-height:0;"><img src="${item.src}" alt="${escapeHtml(item.title)}" style="display:block;width:100%;height:auto;max-height:calc(100vh - 80px);object-fit:contain;">${project3VideoHotspots()}</div>`:`<img src="${item.src}" alt="${escapeHtml(item.title)}">`}`;
  document.body.appendChild(overlay);
  overlay.querySelector('button').focus();
- overlay.addEventListener('click',e=>{if(e.target===overlay||e.target.closest('button'))closeMaterial()});
+ overlay.addEventListener('click',e=>{if(e.target===overlay||e.target.closest('.project1-lightbox-close'))closeMaterial()});
 }
 function closeMaterial(){document.getElementById('materialLightbox')?.remove();}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMaterial()});
