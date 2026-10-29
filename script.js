@@ -13,6 +13,13 @@ const project3Images=[
  {src:'project3_material_3.png',title:'디스플레이 광고 소재'},
  {src:'project3_material_4.png',title:'온라인 프로모션·체험단·스터디·제휴 이벤트'}
 ];
+const project4Images=[
+ {src:'project4_material_1.jpg',title:'설명회 홈페이지 기획'},
+ {src:'project4_material_2.jpg',title:'설명회 온·오프라인 홍보'},
+ {src:'project4_material_3.png',title:'대규모 설명회 현장 운영'},
+ {src:'project4_material_4.png',title:'설명회 결과 분석 및 보고'}
+];
+
 const project2Images=[
  {src:'project2_material_1.png',title:'광고 운영 성과 지표'},
  {src:'project2_material_2.png',title:'광고 매체별 운영 현황'},
@@ -41,7 +48,7 @@ function project3InterviewHotspots(){
  return project3InterviewLinks.map((v,i)=>`<a href="${v.url}" target="_blank" rel="noopener noreferrer" aria-label="${v.title} 영상 보기" title="${v.title} 영상 보기" style="position:absolute;left:${i%2===0?3:50.8}%;top:${[2,2,33,33,65.2,65.2][i]}%;width:46%;height:30%;z-index:3;cursor:pointer;"></a>`).join('');
 }
 function projectMaterials(items=materialImages){
- return `<div class="portfolio-materials">${items.map((m,i)=>`<figure>${items===project3Images&&i===0?`<div style="position:relative;width:100%;line-height:0;"><button type="button" class="material-button" onclick="openMaterial('project3',0)" aria-label="${escapeHtml(m.title)} 확대" style="display:block;width:100%;"><img src="${m.src}" alt="${escapeHtml(m.title)}" loading="lazy" style="display:block;width:100%;height:auto;"></button>${project3VideoHotspots()}</div>`:items===project3Images&&i===1?`<div style="position:relative;width:100%;line-height:0;"><button type="button" class="material-button" onclick="openMaterial('project3',1)" aria-label="${escapeHtml(m.title)} 확대" style="display:block;width:100%;"><img src="${m.src}" alt="${escapeHtml(m.title)}" loading="lazy" style="display:block;width:100%;height:auto;"></button>${project3InterviewHotspots()}</div>`:`<button type="button" class="material-button" onclick="openMaterial('${items===project3Images?'project3':items===project2Images?'project2':'project1'}',${i})" aria-label="${escapeHtml(m.title)} 확대"><img src="${m.src}" alt="${escapeHtml(m.title)}" loading="lazy"></button>`}<figcaption>${escapeHtml(m.title)}</figcaption></figure>`).join('')}</div>${items===materialImages?'<p class="note">※ 이해를 돕기 위해 실제 예산 및 내부 수치는 비식별화한 자료입니다.</p>':''}`;
+ return `<div class="portfolio-materials">${items.map((m,i)=>`<figure>${items===project3Images&&i===0?`<div style="position:relative;width:100%;line-height:0;"><button type="button" class="material-button" onclick="openMaterial('project3',0)" aria-label="${escapeHtml(m.title)} 확대" style="display:block;width:100%;"><img src="${m.src}" alt="${escapeHtml(m.title)}" loading="lazy" style="display:block;width:100%;height:auto;"></button>${project3VideoHotspots()}</div>`:items===project3Images&&i===1?`<div style="position:relative;width:100%;line-height:0;"><button type="button" class="material-button" onclick="openMaterial('project3',1)" aria-label="${escapeHtml(m.title)} 확대" style="display:block;width:100%;"><img src="${m.src}" alt="${escapeHtml(m.title)}" loading="lazy" style="display:block;width:100%;height:auto;"></button>${project3InterviewHotspots()}</div>`:`<button type="button" class="material-button" onclick="openMaterial('${items===project3Images?'project3':items===project2Images?'project2':items===project4Images?'project4':'project1'}',${i})" aria-label="${escapeHtml(m.title)} 확대"><img src="${m.src}" alt="${escapeHtml(m.title)}" loading="lazy"></button>`}<figcaption>${escapeHtml(m.title)}</figcaption></figure>`).join('')}</div>${items===materialImages?'<p class="note">※ 이해를 돕기 위해 실제 예산 및 내부 수치는 비식별화한 자료입니다.</p>':''}`;
 }
 function renderCards(){
  const root=document.getElementById('projectCards');
@@ -49,7 +56,7 @@ function renderCards(){
  root.innerHTML=PROJECTS.map((p,i)=>`<a class="card" href="#project-${i+1}"><div class="num">PROJECT ${String(i+1).padStart(2,'0')}</div><h3>${escapeHtml(p.title)}</h3><div class="tag">${escapeHtml(p.category)}</div><p>${escapeHtml(p.summary)}</p><strong>CASE STUDY ↘</strong></a>`).join('');
  let container=document.getElementById('projectCaseStudies');
  if(!container){container=document.createElement('div');container.id='projectCaseStudies';root.insertAdjacentElement('afterend',container)}
- container.innerHTML=PROJECTS.map((p,i)=>`<article class="case-study" id="project-${i+1}"><div class="eyebrow case-eyebrow">PROJECT ${String(i+1).padStart(2,'0')} · ${escapeHtml(p.category)}</div><h2>${escapeHtml(p.title)}</h2><p class="lead">${escapeHtml(p.summary)}</p>${i===0?projectMaterials():i===1?projectMaterials(project2Images):i===2?projectMaterials(project3Images):''}${[['SITUATION',p.situation],['KPI',p.kpi],['ACTION',p.action],['RESULT',p.result],['INSIGHT',p.insight]].map(([k,v])=>`<div class="detail"><h4>${k}</h4><p>${escapeHtml(v)}</p></div>`).join('')}<a class="case-top" href="#projects">↑ 프로젝트 목록으로</a></article>`).join('');
+ container.innerHTML=PROJECTS.map((p,i)=>`<article class="case-study" id="project-${i+1}"><div class="eyebrow case-eyebrow">PROJECT ${String(i+1).padStart(2,'0')} · ${escapeHtml(p.category)}</div><h2>${escapeHtml(p.title)}</h2><p class="lead">${escapeHtml(p.summary)}</p>${i===0?projectMaterials():i===1?projectMaterials(project2Images):i===2?projectMaterials(project3Images):i===3?projectMaterials(project4Images):''}${[['SITUATION',p.situation],['KPI',p.kpi],['ACTION',p.action],['RESULT',p.result],['INSIGHT',p.insight]].map(([k,v])=>`<div class="detail"><h4>${k}</h4><p>${escapeHtml(v)}</p></div>`).join('')}<a class="case-top" href="#projects">↑ 프로젝트 목록으로</a></article>`).join('');
  const detail=document.getElementById('detailView');
  if(detail)detail.classList.add('hidden');
  const overview=document.getElementById('overview');
@@ -58,7 +65,7 @@ function renderCards(){
 function openDetail(i){document.getElementById(`project-${i+1}`)?.scrollIntoView({behavior:'smooth'});}
 function closeDetail(){location.hash='projects';}
 function openMaterial(project,i){
- const item=(project==='project3'?project3Images:project==='project2'?project2Images:materialImages)[i];if(!item)return;
+ const item=(project==='project3'?project3Images:project==='project2'?project2Images:project==='project4'?project4Images:materialImages)[i];if(!item)return;
  closeMaterial();
  const overlay=document.createElement('div');
  overlay.id='materialLightbox';overlay.className='project1-lightbox';
