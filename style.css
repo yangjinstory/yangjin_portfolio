@@ -217,3 +217,11 @@ h2 {
 .material-button img{display:block;width:100%;height:auto;aspect-ratio:1.7/1;object-fit:contain}
 .portfolio-materials figcaption{text-align:center;color:#42698f;font-size:13px;font-weight:700;margin-top:10px}
 @media(max-width:680px){.portfolio-materials{grid-template-columns:1fr}.case-study{padding:38px 0 45px;scroll-margin-top:80px}}
+
+/* 메인 화면 핵심 역량 4개: 기존 네이비 배경 위 텍스트만 배치 */
+.hero-skills{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:28px 0 0;max-width:1120px}
+.hero-skill{min-width:0;display:flex;flex-direction:column;gap:6px}
+.hero-skill strong{font-size:14px;font-weight:750;line-height:1.4;color:#a8cffa}
+.hero-skill span{font-size:13px;line-height:1.55;color:#e4edf7;word-break:keep-all}
+@media(max-width:900px){.hero-skills{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:20px}}
+@media(max-width:480px){.hero-skills{grid-template-columns:1fr;gap:14px}.hero-skill{gap:2px}}
